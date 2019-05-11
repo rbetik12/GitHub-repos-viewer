@@ -1,19 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableHead from '@material-ui/core/TableHead';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableFooter from '@material-ui/core/TableFooter';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import IconButton from '@material-ui/core/IconButton';
-import FirstPageIcon from '@material-ui/icons/FirstPage';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import LastPageIcon from '@material-ui/icons/LastPage';
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableHead from "@material-ui/core/TableHead";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableFooter from "@material-ui/core/TableFooter";
+import TablePagination from "@material-ui/core/TablePagination";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+import IconButton from "@material-ui/core/IconButton";
+import FirstPageIcon from "@material-ui/icons/FirstPage";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import LastPageIcon from "@material-ui/icons/LastPage";
 
 //Styles for action buttons
 const actionsStyles = theme => ({
@@ -54,28 +54,28 @@ class TablePaginationActions extends React.Component {
                     disabled={page === 0}
                     aria-label="First Page"
                 >
-                    {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
+                    {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
                 </IconButton>
                 <IconButton
                     onClick={this.handleBackButtonClick}
                     disabled={page === 0}
                     aria-label="Previous Page"
                 >
-                    {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+                    {theme.direction === "rtl" ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
                 </IconButton>
                 <IconButton
                     onClick={this.handleNextButtonClick}
                     disabled={page >= Math.ceil(count / rowsPerPage) - 1}
                     aria-label="Next Page"
                 >
-                    {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+                    {theme.direction === "rtl" ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
                 </IconButton>
                 <IconButton
                     onClick={this.handleLastPageButtonClick}
                     disabled={page >= Math.ceil(count / rowsPerPage) - 1}
                     aria-label="Last Page"
                 >
-                    {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
+                    {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
                 </IconButton>
             </div>
         );
@@ -104,18 +104,18 @@ function createData(name, language, forks, stars) {
 
 const styles = theme => ({
     root: {
-        width: '100%',
+        width: "100%",
         marginTop: theme.spacing.unit * 3,
     },
     table: {
         minWidth: 500,
     },
     tableWrapper: {
-        overflowX: 'auto',
+        overflowX: "auto",
     },
 });
 
-//Defines custom style for header's cells
+//Defines custom style for header"s cells
 const HeaderCell = withStyles({
     head: {
         fontWeight: 700,
@@ -129,19 +129,19 @@ class ReposTable extends React.Component {
     //Fills info for rows to display
     state = {
         rows: [
-            createData('Cupcake', 305, 3.7, 0),
-            createData('Donut', 452, 25.0, 0),
-            createData('Eclair', 262, 16.0, 0),
-            createData('Frozen yoghurt', 159, 6.0, 0),
-            createData('Gingerbread', 356, 16.0, 0),
-            createData('Honeycomb', 408, 3.2, 0),
-            createData('Ice cream sandwich', 237, 9.0, 0),
-            createData('Jelly Bean', 375, 0.0, 0),
-            createData('KitKat', 518, 26.0, 0),
-            createData('Lollipop', 392, 0.2, 0),
-            createData('Marshmallow', 318, 0, 0),
-            createData('Nougat', 360, 19.0, 0),
-            createData('Oreo', 437, 18.0), 0,
+            createData("Cupcake", 305, 3.7, 0),
+            createData("Donut", 452, 25.0, 0),
+            createData("Eclair", 262, 16.0, 0),
+            createData("Frozen yoghurt", 159, 6.0, 0),
+            createData("Gingerbread", 356, 16.0, 0),
+            createData("Honeycomb", 408, 3.2, 0),
+            createData("Ice cream sandwich", 237, 9.0, 0),
+            createData("Jelly Bean", 375, 0.0, 0),
+            createData("KitKat", 518, 26.0, 0),
+            createData("Lollipop", 392, 0.2, 0),
+            createData("Marshmallow", 318, 0, 0),
+            createData("Nougat", 360, 19.0, 0),
+            createData("Oreo", 437, 18.0), 0,
         ].sort((a, b) => (a.stars < b.stars ? -1 : 1)),
         page: 0,
         rowsPerPage: 5,
