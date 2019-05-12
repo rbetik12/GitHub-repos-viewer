@@ -4,7 +4,7 @@ SPA made for viewing user's repos on GitHub. Wrote on NodeJS + React.
 
 ## TO-DO:
 * Rewrite readme
-~~* Write information in table after receiving response from server~~
+* ~~ Write information in table after receiving response from server~~
 * Launching scripts
 * Add error checking(during server requesting and empty table clicking)
 * Intializing scripts
