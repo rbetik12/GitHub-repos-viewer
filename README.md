@@ -1,6 +1,6 @@
 # GitHub repositories viewer
 
-SPA made for viewing user's repos on GitHub. Wrote on NodeJS + React.
+SPA made for viewing user's repos on GitHub. Made with NodeJS(v10.15.3) + React(v16.8.6).
 
 ## TO-DO:
 * Rewrite readme
