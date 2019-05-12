@@ -17,7 +17,7 @@ class SubmitButton extends React.Component {
     render() {
         return (
             <div>
-                <Button variant="contained" color="primary"  onClick={() => { this.props.getRepos(); }}>
+                <Button variant="contained" color="primary" type="submit" form="username_form">
                     Show repositories
                 </Button>
             </div>

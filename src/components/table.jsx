@@ -97,9 +97,9 @@ const TablePaginationActionsWrapped = withStyles(actionsStyles, { withTheme: tru
 
 //Creates JSON object with info about repo
 let counter = 0;
-function createData(name, language, forks, stars) {
+function createData(name_, language_, forks_, stars_, id_) {
     counter += 1;
-    return { id: counter, name, language, forks, stars };
+    return { id: counter, name: name_, language: language_, forks: forks_, stars: stars_, repoId: id_ };
 }
 
 const styles = theme => ({
@@ -115,7 +115,7 @@ const styles = theme => ({
     },
 });
 
-//Defines custom style for header"s cells
+//Defines custom style for header's cells
 const HeaderCell = withStyles({
     head: {
         fontWeight: 700,
@@ -126,25 +126,47 @@ const HeaderCell = withStyles({
 
 //Table
 class ReposTable extends React.Component {
-    //Fills info for rows to display
+    //Fills info to rows to display
+
+    componentWillUpdate(props) {
+        // Checks if data really changed to avoid recursively calling update function
+        if (!this.compareProps(props)) {
+            let repos = Array.from(props.repos);
+            let updatedRows = new Array();
+            for (let i = 0; i < repos.length; i++) {
+                let row = repos[i];
+                updatedRows.push(createData(row.full_name, row.language, row.forks, row.stars, row.id));
+            }
+            updatedRows.sort((a, b) => (a.stars > b.stars ? -1 : 1));
+            this.setState({
+                rows: updatedRows,
+                page: 0,
+                rowsPerPage: 5
+            });
+        }
+        else
+            return;
+    }
+
+    compareProps(props) {
+        //Compares previous username and new one
+        let newFullName = props.repos[0].full_name.toString();
+        let newUsername = newFullName.substring(0, newFullName.indexOf('/'));
+        let currentFullName;
+        let currentUsername;
+        if (this.state.rows[0].name) {
+            currentFullName = this.state.rows[0].name.toString();
+            currentUsername = currentFullName.substring(0, currentFullName.indexOf('/'));
+        }
+        console.log(newUsername);
+        console.log(currentUsername);
+        return newUsername === currentUsername;
+    }
+
     state = {
-        rows: [
-            createData("Cupcake", 305, 3.7, 0),
-            createData("Donut", 452, 25.0, 0),
-            createData("Eclair", 262, 16.0, 0),
-            createData("Frozen yoghurt", 159, 6.0, 0),
-            createData("Gingerbread", 356, 16.0, 0),
-            createData("Honeycomb", 408, 3.2, 0),
-            createData("Ice cream sandwich", 237, 9.0, 0),
-            createData("Jelly Bean", 375, 0.0, 0),
-            createData("KitKat", 518, 26.0, 0),
-            createData("Lollipop", 392, 0.2, 0),
-            createData("Marshmallow", 318, 0, 0),
-            createData("Nougat", 360, 19.0, 0),
-            createData("Oreo", 437, 18.0), 0,
-        ].sort((a, b) => (a.stars < b.stars ? -1 : 1)),
-        page: 0,
-        rowsPerPage: 5,
+        rows: [{ name: null }],
+        page: 1,
+        rowsPerPage: 0,
     };
 
     handleChangePage = (event, page) => {
@@ -190,7 +212,7 @@ class ReposTable extends React.Component {
                         <TableFooter>
                             <TableRow>
                                 <TablePagination
-                                    rowsPerPageOptions={[5, 10, 25]}
+                                    rowsPerPageOptions={[ 5, 10, 25]}
                                     colSpan={4}
                                     count={rows.length}
                                     rowsPerPage={rowsPerPage}

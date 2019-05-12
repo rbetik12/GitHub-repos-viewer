@@ -52,6 +52,7 @@ header {
     font-weight: bold;
     font-size: 40px;
     text-align: center;
+    z-index: 100000;
     padding: 0.2%;
     width: 100%;
     background-color: white;
@@ -63,5 +64,23 @@ header .text-header {
 }
 
 .table-wrapper {
-    margin-top: 3.5%;
+    margin-top: 1%;
+}
+
+.main-container{
+    position: relative;
+}
+
+.content-wrapper{
+    padding-bottom: 10rem;
+    min-height: 85vh;
+}
+
+.footer-wrapper{
+    position: absolute;
+    bottom: 0;
+    padding: 1%;
+    margin-bottom: 0;
+    color: white;
+    background-color: #212121;
 }

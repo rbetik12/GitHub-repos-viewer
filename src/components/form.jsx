@@ -3,12 +3,12 @@ import SubmitButton from "./button";
 
 function Form(props) {
     return (
-        <div className="form-wrapper main-wrapper card-wrapper">
-            <input type="text" className="username-input" placeholder="Enter username" />
+        <form className="form-wrapper main-wrapper card-wrapper" id="username_form" onSubmit={props.getRepos}>
+            <input type="text" className="username-input" placeholder="Enter username" name="username"/>
             <div className="button-wrapper">
-                <SubmitButton getRepos={props.getRepos} />
+                <SubmitButton />
             </div>
-        </div>
+        </form>
     );
 }
 

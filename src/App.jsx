@@ -7,11 +7,20 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import setupCollapse from "./scripts/collapse_header";
 
-const USERNAME = "rbetik12";
 
 class App extends React.Component {
 
-    gettingRepos = async () => {
+    state = {
+        data: []
+    }
+
+    constructor(props) {
+        super(props);
+    }
+
+    gettingRepos = async (e) => {
+        e.preventDefault();
+        const USERNAME = e.target.elements.username.value;
         const serverRes = await fetch(`http://localhost:8000/repos/${USERNAME}`, {
             method: "GET",
             headers: {
@@ -19,18 +28,23 @@ class App extends React.Component {
                 "User-agent": ""
             }
         });
-        const data = await serverRes.json();
-        console.log(data);
+        const received_data = await serverRes.json();
+        this.setState({
+            data: received_data
+        })
+        await console.log(received_data);
     }
 
     render() {
         return (
-            <div className="main">
-                <Header />
-                <MainText />
-                <Form getRepos={this.gettingRepos} />
-                <div className="table-wrapper main-wrapper">
-                    <ReposTable />
+            <div className="main-container">
+                <div className="content-wrapper">
+                    <Header />
+                    <MainText />
+                    <Form getRepos={this.gettingRepos} />
+                    <div className="table-wrapper main-wrapper">
+                        <ReposTable repos={this.state.data} />
+                    </div>
                 </div>
                 <Footer />
             </div>

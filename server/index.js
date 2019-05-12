@@ -30,6 +30,7 @@ app.get("/repos/:username", (req, res) => {
         console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
         let json = JSON.parse(body);
         repos = writeReposToJSON(json);
+        console.log(repos);
         res.send(repos);
     });
 });
