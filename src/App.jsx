@@ -14,10 +14,6 @@ class App extends React.Component {
         data: []
     }
 
-    constructor(props) {
-        super(props);
-    }
-
     gettingRepos = async (e) => {
         e.preventDefault();
         const USERNAME = e.target.elements.username.value;
@@ -32,7 +28,6 @@ class App extends React.Component {
         this.setState({
             data: received_data
         })
-        await console.log(received_data);
     }
 
     render() {
