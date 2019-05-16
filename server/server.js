@@ -29,13 +29,13 @@ app.get("/repos/:username", (req, res) => {
         if (error) return console.log('error:', error); // Print the error if one occurred and handle it
         console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
         let json = JSON.parse(body);
-        repos = writeReposToJSON(json);
+        repos = writeReposToJSON(json, response.statusCode);
         res.send(repos);
     });
 });
 
-//Takes the most important inforamtion from API response(like repo name, date of creation, etc) and returns it.
-function writeReposToJSON(json) {
+//Takes the most important inforamtion from API response(like repo name, date of creation and status code, etc) and returns it.
+function writeReposToJSON(json, statusCode) {
     let data = new Array();
     for (let i = 0; i < json.length; i++) {
         const json_ = json[i];
@@ -51,5 +51,8 @@ function writeReposToJSON(json) {
             "owner_id": json_.owner.id
         });
     }
+    data.push({
+        "status_code": statusCode
+    });
     return data;
 }

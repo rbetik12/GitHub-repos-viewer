@@ -24,10 +24,21 @@ class App extends React.Component {
                 "User-agent": ""
             }
         });
+
         const received_data = await serverRes.json();
-        this.setState({
-            data: received_data
-        })
+
+        if (received_data[received_data.length - 1].status_code === 200) {
+            this.setState({
+                data: received_data
+            });
+            document.getElementsByClassName("table-footer")[0].style.display = "table-footer-group";
+            document.getElementsByClassName("table-body")[0].style.display = "table-row-group";
+        }
+        else{
+            document.getElementsByClassName("table-footer")[0].style.display = "none";
+            document.getElementsByClassName("table-body")[0].style.display = "none";
+
+        }
     }
 
     render() {

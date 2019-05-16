@@ -67,6 +67,14 @@ header .text-header {
     margin-top: 1%;
 }
 
+.table-body {
+    display: none;
+}
+
+.table-footer{
+    display: none;
+}
+
 .main-container{
     position: relative;
 }

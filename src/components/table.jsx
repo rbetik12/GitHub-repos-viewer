@@ -130,8 +130,12 @@ class ReposTable extends React.Component {
 
     componentWillUpdate(props) {
         // Checks if data really changed to avoid recursively calling update function
-        if (!this.compareProps(props)) {
-            let repos = Array.from(props.repos);
+        const newProps = props.repos;
+        const oldProps = this.state.rows;
+        console.log(newProps);
+        console.log(oldProps);
+        if (!this.compareUsernames(newProps, oldProps)) {
+            let repos = Array.from(newProps);
             let updatedRows = new Array();
             for (let i = 0; i < repos.length; i++) {
                 let row = repos[i];
@@ -144,20 +148,14 @@ class ReposTable extends React.Component {
                 rowsPerPage: 5
             });
         }
-        else
-            return;
     }
 
-    compareProps(props) {
-        //Compares previous username and new one
-        let newFullName = props.repos[0].full_name.toString();
+    compareUsernames(newProps, oldProps) {
+        let newFullName = newProps[0].full_name.toString();
         let newUsername = newFullName.substring(0, newFullName.indexOf('/'));
-        let currentFullName;
-        let currentUsername;
-        if (this.state.rows[0].name) {
-            currentFullName = this.state.rows[0].name.toString();
-            currentUsername = currentFullName.substring(0, currentFullName.indexOf('/'));
-        }
+        if (oldProps[0].name === null) return false;
+        let currentFullName = oldProps[0].name.toString();
+        let currentUsername = currentFullName.substring(0, currentFullName.indexOf('/'));
         console.log(newUsername);
         console.log(currentUsername);
         return newUsername === currentUsername;
@@ -192,7 +190,7 @@ class ReposTable extends React.Component {
                             <HeaderCell align="right">Forks</HeaderCell>
                             <HeaderCell align="right">Stars</HeaderCell>
                         </TableHead>
-                        <TableBody>
+                        <TableBody className="table-body">
                             {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => (
                                 <TableRow key={row.id}>
                                     <TableCell component="th" scope="row">
@@ -209,23 +207,25 @@ class ReposTable extends React.Component {
                                 </TableRow>
                             )}
                         </TableBody>
-                        <TableFooter>
-                            <TableRow>
-                                <TablePagination
-                                    rowsPerPageOptions={[ 5, 10, 25]}
-                                    colSpan={4}
-                                    count={rows.length}
-                                    rowsPerPage={rowsPerPage}
-                                    page={page}
-                                    SelectProps={{
-                                        native: true,
-                                    }}
-                                    onChangePage={this.handleChangePage}
-                                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                    ActionsComponent={TablePaginationActionsWrapped}
-                                />
-                            </TableRow>
-                        </TableFooter>
+                        <div className="table-footer">
+                            <TableFooter >
+                                <TableRow>
+                                    <TablePagination
+                                        rowsPerPageOptions={[5, 10, 25]}
+                                        colSpan={4}
+                                        count={rows.length}
+                                        rowsPerPage={rowsPerPage}
+                                        page={page}
+                                        SelectProps={{
+                                            native: true,
+                                        }}
+                                        onChangePage={this.handleChangePage}
+                                        onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                        ActionsComponent={TablePaginationActionsWrapped}
+                                    />
+                                </TableRow>
+                            </TableFooter>
+                        </div>
                     </Table>
                 </div>
             </Paper>
