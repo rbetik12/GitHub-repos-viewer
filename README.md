@@ -6,7 +6,7 @@ SPA made for viewing user's repos on GitHub. Made with NodeJS(v10.15.3) + React(
 * Rewrite readme
 * ~~Write information in table after receiving response from server~~
 * Launching scripts
-* Add error checking(during server requesting and empty table clicking)
+* ~~Add error checking(during server requesting and empty table clicking)~~
 * Intializing scripts
 
 To run this app you should firstly launch frontend server:
