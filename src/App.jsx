@@ -26,18 +26,20 @@ class App extends React.Component {
         });
 
         const received_data = await serverRes.json();
-
+        //Checks whether user exists. If user doesn't exist just don't show the table bodu and footer
         if (received_data[received_data.length - 1].status_code === 200) {
             this.setState({
                 data: received_data
             });
             document.getElementsByClassName("table-footer")[0].style.display = "table-footer-group";
             document.getElementsByClassName("table-body")[0].style.display = "table-row-group";
+            document.getElementsByClassName("user-exist")[0].style.opacity = 0;
+
         }
-        else{
+        else {
             document.getElementsByClassName("table-footer")[0].style.display = "none";
             document.getElementsByClassName("table-body")[0].style.display = "none";
-
+            document.getElementsByClassName("user-exist")[0].style.opacity = 1;
         }
     }
 

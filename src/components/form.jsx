@@ -8,6 +8,9 @@ function Form(props) {
             <div className="button-wrapper">
                 <SubmitButton />
             </div>
+            <span className="user-exist animated">
+                User doesn't exist    
+            </span>
         </form>
     );
 }
