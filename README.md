@@ -13,7 +13,7 @@ Made with Node.js (v10.15.3) and React.js (v6.4.1)
 * ~~Write project description to main text block~~ 
 * ~~Fill footer~~
 
-###How to launch that app:
+##How to launch that app:
 1. (Only for first time launch) Run ```npm install``` then ```npm run install-server```
 2. Launch frontend ```npm run start-frontend``` and backend ```npm run start-server``` in separate terminals
 3. Go to localhost:3000
