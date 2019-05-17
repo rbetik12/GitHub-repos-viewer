@@ -8,8 +8,8 @@ SPA made for viewing user's repos on GitHub. Made with NodeJS(v10.15.3) + React(
 * Launching scripts
 * ~~Add error checking(during server requesting and empty table clicking)~~
 * Intializing scripts
-* Write project description to main text block 
-* Fill footer
+* ~~Write project description to main text block~~ 
+* ~~Fill footer~~
 
 To run this app you should firstly launch frontend server:
 
