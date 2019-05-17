@@ -99,7 +99,7 @@ const TablePaginationActionsWrapped = withStyles(actionsStyles, { withTheme: tru
 let counter = 0;
 function createData(name_, language_, forks_, stars_, id_, url_, updated_at_) {
     counter += 1;
-    return { id: counter, name: name_, language: language_, forks: forks_, stars: stars_, repoId: id_, url: url_, updated_at: updated_at_};
+    return { id: counter, name: name_, language: language_, forks: forks_, stars: stars_, repoId: id_, url: url_, updated_at: updated_at_ };
 }
 
 const styles = theme => ({

@@ -1,5 +1,4 @@
 body {
-    margin: 0;
     background-color: #fafafa;
 }
 
@@ -35,7 +34,7 @@ body {
     font-size: 18px;
 }
 
-.main-text-container{
+.main-text-container {
     margin-top: 10%;
 }
 
@@ -52,7 +51,7 @@ body {
     padding: 3%;
 }
 
-.main-text-wrapper{
+.main-text-wrapper {
     margin-top: 1%;
 }
 
@@ -95,7 +94,7 @@ header .text-header {
 }
 
 .content-wrapper {
-    text-align: center;    
+    text-align: center;
     padding-bottom: 10rem;
     min-height: 84vh;
 }
@@ -134,14 +133,16 @@ header .text-header {
     background-color: #212121;
 }
 
-@media only screen and (max-width: 780px){
-    #header-main{
+@media only screen and (max-width: 780px) {
+    #header-main {
         font-size: 30px;
     }
-    #text-main{
+
+    #text-main {
         font-size: 16px;
     }
-    .footer-wrapper{
+
+    .footer-wrapper {
         padding: 1%;
     }
 }
