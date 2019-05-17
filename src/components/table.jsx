@@ -97,9 +97,9 @@ const TablePaginationActionsWrapped = withStyles(actionsStyles, { withTheme: tru
 
 //Creates JSON object with info about repo
 let counter = 0;
-function createData(name_, language_, forks_, stars_, id_) {
+function createData(name_, language_, forks_, stars_, id_, url_) {
     counter += 1;
-    return { id: counter, name: name_, language: language_, forks: forks_, stars: stars_, repoId: id_ };
+    return { id: counter, name: name_, language: language_, forks: forks_, stars: stars_, repoId: id_, url: url_};
 }
 
 const styles = theme => ({
@@ -139,7 +139,7 @@ class ReposTable extends React.Component {
             let updatedRows = new Array();
             for (let i = 0; i < repos.length; i++) {
                 let row = repos[i];
-                updatedRows.push(createData(row.full_name, row.language, row.forks, row.stars, row.id));
+                updatedRows.push(createData(row.full_name, row.language, row.forks, row.stars, row.id, row.html_url));
             }
             updatedRows.sort((a, b) => (a.stars > b.stars ? -1 : 1));
             this.setState({
@@ -194,7 +194,7 @@ class ReposTable extends React.Component {
                             {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => (
                                 <TableRow key={row.id}>
                                     <TableCell component="th" scope="row">
-                                        {row.name}
+                                        <a href={row.url} className="repo-link">{row.name}</a>
                                     </TableCell>
                                     <TableCell align="right">{row.language}</TableCell>
                                     <TableCell align="right">{row.forks}</TableCell>
