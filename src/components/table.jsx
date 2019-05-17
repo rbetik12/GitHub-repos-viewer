@@ -97,9 +97,9 @@ const TablePaginationActionsWrapped = withStyles(actionsStyles, { withTheme: tru
 
 //Creates JSON object with info about repo
 let counter = 0;
-function createData(name_, language_, forks_, stars_, id_, url_) {
+function createData(name_, language_, forks_, stars_, id_, url_, updated_at_) {
     counter += 1;
-    return { id: counter, name: name_, language: language_, forks: forks_, stars: stars_, repoId: id_, url: url_};
+    return { id: counter, name: name_, language: language_, forks: forks_, stars: stars_, repoId: id_, url: url_, updated_at: updated_at_};
 }
 
 const styles = theme => ({
@@ -136,10 +136,12 @@ class ReposTable extends React.Component {
         console.log(oldProps);
         if (!this.compareUsernames(newProps, oldProps)) {
             let repos = Array.from(newProps);
-            let updatedRows = new Array();
-            for (let i = 0; i < repos.length; i++) {
+            let updatedRows = [];
+            for (let i = 0; i < repos.length - 1; i++) {
                 let row = repos[i];
-                updatedRows.push(createData(row.full_name, row.language, row.forks, row.stars, row.id, row.html_url));
+                let monthIndex = new Date(row.updated_at).toDateString().indexOf(" ") + 1;
+                let date = new Date(row.updated_at).toDateString().substring(monthIndex);
+                updatedRows.push(createData(row.full_name, row.language, row.forks, row.stars, row.id, row.html_url, date));
             }
             updatedRows.sort((a, b) => (a.stars > b.stars ? -1 : 1));
             this.setState({
@@ -189,6 +191,7 @@ class ReposTable extends React.Component {
                             <HeaderCell align="right" classes={{ root: "table-header-cell" }} variant="head">Language</HeaderCell>
                             <HeaderCell align="right">Forks</HeaderCell>
                             <HeaderCell align="right">Stars</HeaderCell>
+                            <HeaderCell align="right">Last updated</HeaderCell>
                         </TableHead>
                         <TableBody className="table-body">
                             {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => (
@@ -199,6 +202,7 @@ class ReposTable extends React.Component {
                                     <TableCell align="right">{row.language}</TableCell>
                                     <TableCell align="right">{row.forks}</TableCell>
                                     <TableCell align="right">{row.stars}</TableCell>
+                                    <TableCell align="right">{row.updated_at}</TableCell>
                                 </TableRow>
                             ))}
                             {emptyRows > 0 && (
