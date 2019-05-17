@@ -15,6 +15,7 @@ Made with Node.js (v10.15.3) and React.js (v6.4.1)
 * Direct authorisation through GitHub API 
 
 ### How to launch that app:
-1. (Only for first time launch) Run ```npm install``` then ```npm run install-server```
-2. Launch frontend ```npm run start-frontend``` and backend ```npm run start-server``` in separate terminals
-3. Go to localhost:3000
+1. Install Node.js (if you don't have one). You can do it [here](https://nodejs.org).
+2. (Only for first time launch) Run ```npm install``` then ```npm run install-server```
+3. Launch frontend ```npm run start-frontend``` and backend ```npm run start-server``` in separate terminals
+4. Go to http://localhost:3000
