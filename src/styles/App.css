@@ -1,9 +1,15 @@
+body {
+    margin: 0;
+    background-color: #fafafa;
+}
+
 .main-wrapper {
     margin: 0 2%;
     margin-top: 3%;
 }
 
 .card-wrapper {
+    background-color: white;
     box-shadow: 0 3px 5px -3px rgba(0, 0, 0, 0.5);
 }
 
@@ -25,7 +31,12 @@
 }
 
 #text-main {
-    margin-top: 0%;
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.main-text-container{
+    margin-top: 10%;
 }
 
 .username-input {
@@ -39,6 +50,10 @@
     margin-top: 0%;
     margin-bottom: 24px;
     padding: 3%;
+}
+
+.main-text-wrapper{
+    margin-top: 1%;
 }
 
 .button-wrapper {
@@ -60,7 +75,7 @@ header {
 
 header .text-header {
     padding: 0;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .table-wrapper {
@@ -80,8 +95,9 @@ header .text-header {
 }
 
 .content-wrapper {
+    text-align: center;    
     padding-bottom: 10rem;
-    min-height: 85vh;
+    min-height: 84vh;
 }
 
 .user-exist {
@@ -107,6 +123,7 @@ header .text-header {
 }
 
 .footer-wrapper {
+    display: block;
     position: absolute;
     bottom: 0;
     padding: 0.5%;
@@ -115,4 +132,16 @@ header .text-header {
     color: white;
     text-align: center;
     background-color: #212121;
+}
+
+@media only screen and (max-width: 780px){
+    #header-main{
+        font-size: 30px;
+    }
+    #text-main{
+        font-size: 16px;
+    }
+    .footer-wrapper{
+        padding: 1%;
+    }
 }
