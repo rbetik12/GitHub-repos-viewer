@@ -14,11 +14,10 @@ SPA made for viewing user's repos on GitHub. Made with NodeJS(v10.15.3) + React(
 To run this app you should firstly launch frontend server:
 
 ```console
-npm start
+npm run start-frontend
 ```
-
 Then backend:
 
 ```console
-node server/index.js
+npm run start-server
 ```
