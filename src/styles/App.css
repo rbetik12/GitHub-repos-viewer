@@ -71,41 +71,48 @@ header .text-header {
     display: none;
 }
 
-.table-footer{
+.table-footer {
     display: none;
 }
 
-.main-container{
+.main-container {
     position: relative;
 }
 
-.content-wrapper{
+.content-wrapper {
     padding-bottom: 10rem;
     min-height: 85vh;
 }
 
-.user-exist{
+.user-exist {
     display: inline-block;
     margin-top: 10px;
     opacity: 0;
     color: #d50000;
 }
 
-.repo-link{
+.link {
     text-decoration: none;
     color: black;
 }
 
-.repo-link:hover{
+.link:hover {
     text-decoration: underline;
     color: #3f51b5;
 }
 
-.footer-wrapper{
+.footer-link {
+    font-weight: bold;
+    color: white;
+}
+
+.footer-wrapper {
     position: absolute;
     bottom: 0;
-    padding: 1%;
+    padding: 0.5%;
+    width: 99%;
     margin-bottom: 0;
     color: white;
+    text-align: center;
     background-color: #212121;
 }

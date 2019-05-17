@@ -197,7 +197,7 @@ class ReposTable extends React.Component {
                             {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => (
                                 <TableRow key={row.id}>
                                     <TableCell component="th" scope="row">
-                                        <a href={row.url} className="repo-link">{row.name}</a>
+                                        <a href={row.url} className="link">{row.name}</a>
                                     </TableCell>
                                     <TableCell align="right">{row.language}</TableCell>
                                     <TableCell align="right">{row.forks}</TableCell>
