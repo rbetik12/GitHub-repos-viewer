@@ -13,6 +13,7 @@
     "scripts": {
         "start-frontend": "react-scripts start",
         "start-server": "node server/server.js",
+        "install-server": "cd server && npm install && cd ..",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
